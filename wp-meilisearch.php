@@ -22,7 +22,7 @@ add_action("admin_menu", "wp_meili_menu");
 
 function wp_meili_list_call()
 {
-    include_once Wp_Meilisearch_DIR_PATH . '/views/dashboard.php';
+    include_once Wp_Meilisearch_DIR_PATH .'/views/dashboard.php';
 }
 
 
