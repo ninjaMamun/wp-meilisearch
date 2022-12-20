@@ -13,9 +13,16 @@ Domain Path:  /languages
 */
 define("Wp_Meilisearch_DIR_PATH", plugin_dir_path(__FILE__));
 
+
+
+
+/**
+ *Admin pannel menu
+ */
 function wp_meili_menu()
 {
     add_menu_page("Wp Meilisearch", "Wp Meilisearch", "manage_options", "wp-meilisearch", "wp_meili_list_call");
+
 }
 
 add_action("admin_menu", "wp_meili_menu");
@@ -24,6 +31,14 @@ function wp_meili_list_call()
 {
     include_once Wp_Meilisearch_DIR_PATH .'/views/dashboard.php';
 }
+
+
+
+
+
+
+
+
 
 
 /**
