@@ -33,7 +33,6 @@ if ( isset( $_POST['wp_meili_master_key_btn_update'] ) ) {
 
 <form action="" method="post">
 
-
     <p>
         <label>
             MeiliSearch URL
