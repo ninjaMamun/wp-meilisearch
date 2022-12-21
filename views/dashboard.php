@@ -1,4 +1,5 @@
 <?php
+
 require_once Wp_Meilisearch_DIR_PATH . '/vendor/autoload.php';
 
 use Meilisearch\Client;
@@ -49,28 +50,65 @@ declareHelperClass();
 
 function wpMeiliIndex( $client ) {
 
+	global $wpdb;
+
 	$index = $client->index( 'orders' );
 
-	$orders = wc_get_orders( array( 'numberposts' => - 1 ) );
 
-	foreach ( $orders as $order ) {
-		$orderId = $order->get_id();
 
-		$order = wc_get_order( $orderId );
-		if ( ! $order ) {
-			error_log( "Error: Cannot find order $orderId" );
+    $results= $wpdb->get_results ("SELECT COUNT(id) AS x FROM wpkw_posts WHERE post_type='shop_order';");
+    echo 'Order Count number here:';
+    echo (int) ($results[0] -> x ) ;
 
-			return false;
-		}
 
-		$ordersController = new WC_REST_Orders_Controller_Wrapper();
-		$orderData        = $ordersController->get_formatted_item_data( $order );
+    $count = (int) ($results[0] -> x );
+    //$page = 1;
+    $batchSize = 100;
+    $page = 1;
+    $totalPage = ceil($count / $batchSize);
 
-		$index->addDocuments( $orderData );
+    echo "TotalPages: $totalPage";
 
-		echo json_encode( $orderData, JSON_PRETTY_PRINT );
+    $totalPage = 50;
 
-	}
+    while ($page <= $totalPage) {
+
+        //$orders = get orders with offset + limit
+        // do somethng with those orders
+        // do some other processing if needed
+
+
+	    $orders = wc_get_orders( array( 'numberposts' => $batchSize, 'page' => $page) );
+
+	    foreach ( $orders as $order ) {
+		    $orderId = $order->get_id();
+
+		    $order = wc_get_order( $orderId );
+		    if ( ! $order ) {
+			    error_log( "Error: Cannot find order $orderId" );
+
+			    return false;
+		    }
+
+		    $ordersController = new WC_REST_Orders_Controller_Wrapper();
+		    $orderData        = $ordersController->get_formatted_item_data( $order );
+
+		    $index->addDocuments( $orderData );
+
+		    echo "Data size: ";
+		    echo strlen(json_encode($orderData, JSON_NUMERIC_CHECK));
+
+	    }
+
+
+        $page++;
+    }
+
+
+
+
+
+
 
 }
 
