@@ -9,6 +9,7 @@ class AdminAjaxHandler
 	public function init()
 	{
 		add_action( 'wp_ajax_meili_ajax', [$this, 'handleAjaxCall'] );
+		add_action( 'save_post_shop_order', [$this, 'handleOrderUpdate'], 10, 3 );
 	}
 
 	public function handleAjaxCall()
@@ -23,12 +24,22 @@ class AdminAjaxHandler
 		}
 	}
 
+	public function handleOrderUpdate(int $postId, \WP_Post $post, bool $update)
+	{
+		if ($update !== true) {
+			return;
+		}
+
+		$indexer = $this->getIndexer();
+		$indexer->indexOrderByPostIds([$postId]);
+	}
+
 	private function indexOrders()
 	{
 		$page = $_POST['page'];
 		$size = $_POST['limit'];
 		$indexer = $this->getIndexer();
-		$indexer->indexOrders('order', $page, $size);
+		$indexer->indexOrdersByPage('order', $page, $size);
 
 		wp_send_json(['success' => true]);
 	}

@@ -25,3 +25,6 @@ $admin->init();
 
 $ajaxHandler = new \WPMeilisearch\AdminAjaxHandler();
 $ajaxHandler->init();
+
+
+
