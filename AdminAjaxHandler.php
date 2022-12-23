@@ -48,7 +48,7 @@ class AdminAjaxHandler
 	{
 		require_once __DIR__.'/Indexer.php';
 
-		$client = new Client( 'http://127.0.0.1:7700', get_option( 'wp_meli_master_key' ) );
+		$client = ClientFactory::create();
 		$indexer = new Indexer($client);
 
 		return $indexer;
