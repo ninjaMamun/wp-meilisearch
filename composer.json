@@ -1,0 +1,7 @@
+{
+    "require": {
+        "meilisearch/meilisearch-php": "^0.26.1",
+        "symfony/http-client": "^6.2",
+        "nyholm/psr7": "^1.0"
+    }
+}
