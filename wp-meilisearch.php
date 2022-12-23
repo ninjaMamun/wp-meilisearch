@@ -17,6 +17,8 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 require_once __DIR__ . "/AdminSettings.php";
 require_once __DIR__ . "/AdminAjaxHandler.php";
+require_once __DIR__ . "/AdminSearch.php";
+require_once __DIR__ . "/ClientFactory.php";
 //require_once __DIR__."/Indexer.php";
 
 
@@ -25,6 +27,9 @@ $admin->init();
 
 $ajaxHandler = new \WPMeilisearch\AdminAjaxHandler();
 $ajaxHandler->init();
+
+$adminSearch = new \WPMeilisearch\AdminSearch();
+$adminSearch->init();
 
 
 

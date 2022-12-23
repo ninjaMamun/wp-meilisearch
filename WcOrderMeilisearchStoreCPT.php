@@ -7,13 +7,14 @@ class WcOrderMeilisearchStoreCPT extends \WC_Order_Data_Store_CPT
     public function search_orders($term)
     {
         $client = ClientFactory::create();
-        $index = $client->index('orders');
+        $index = $client->index('order');
 
         $result = $index->search($term);
         $documents = $result->getHits();
 
+
         $order_ids = array_map(function($document) {
-            return $document['ID'];
+            return $document['id'];
         }, $documents);
         $order_ids = array_values(array_unique($order_ids));
 
