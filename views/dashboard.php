@@ -34,18 +34,6 @@ if ( isset( $_POST['wp_meili_master_key_btn_update'] ) ) {
 }
 
 
-function declareHelperClass() {
-	/**
-	 * wp-content/plugins/woocommerce/packages/woocommerce-rest-api/src/Controllers/Version3/class-wc-rest-orders-controller.php
-	 */
-	class WC_REST_Orders_Controller_Wrapper extends WC_REST_Orders_Controller {
-
-		public function get_formatted_item_data( $data ) {
-			return parent::get_formatted_item_data( $data );
-		}
-	}
-}
-
 declareHelperClass();
 
 function wpMeiliIndex( $client ) {
