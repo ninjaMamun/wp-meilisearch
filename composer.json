@@ -1,3 +1,4 @@
+
 {
     "require": {
         "meilisearch/meilisearch-php": "^0.26.1",

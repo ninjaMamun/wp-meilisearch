@@ -32,4 +32,4 @@ $adminSearch = new \WPMeilisearch\AdminSearch();
 $adminSearch->init();
 
 
-
+wp_enqueue_style( 'wp_meili_style', plugins_url( '/css/wp_meili_style.css', __FILE__ ), false, '1.0', 'all' );

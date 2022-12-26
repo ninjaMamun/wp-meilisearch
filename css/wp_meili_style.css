@@ -1,0 +1,98 @@
+/* Progress bar container */
+.progress-container {
+    width: 50%;
+    background: #eee;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Progress bar */
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    background: #eee;
+    border-radius: 20px;
+    width: 100%;
+}
+
+/* Progress bar value */
+progress::-webkit-progress-value {
+    background: #0073aa;
+    border-radius: 20px;
+}
+
+progress::-moz-progress-bar {
+    background: #0073aa;
+    border-radius: 20px;
+}
+
+button {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    line-height: 1.25;
+    border-radius: .3rem;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: #0073aa; /* WordPress blue color */
+    background-color: #fff; /* White background color */
+    border-color: #0073aa; /* WordPress blue border color */
+    cursor: pointer; /* Show a pointer cursor on hover */
+}
+
+button:hover {
+    color: #fff; /* White text color on hover */
+    background-color: #0073aa; /* WordPress blue background color on hover */
+    border-color: #0073aa; /* WordPress blue border color on hover */
+}
+
+button:active {
+    color: #fff; /* White text color on active */
+    background-color: #004761; /* Darker WordPress blue background color on active */
+    border-color: #004761; /* Darker WordPress blue border color on active */
+}
+
+button:focus {
+    outline: 0; /* Remove the default focus outline */
+}
+
+
+/* Form CSS */
+
+form {
+    width: 50%;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0073aa;
+}
+

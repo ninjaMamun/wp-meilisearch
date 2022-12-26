@@ -14,8 +14,12 @@ class AdminSettings {
 	}
 
 	public function renderPage() {
+		include_once Wp_Meilisearch_DIR_PATH . '/views/meiliInfo.php';
+		if ( get_option( 'wp_meili_url' ) && get_option( 'wp_meli_master_key' ) != null ) {
+			include_once Wp_Meilisearch_DIR_PATH . '/views/dash.php';
 
-		include_once Wp_Meilisearch_DIR_PATH . '/views/dash.php';
+		}
+
 	}
 
 }
